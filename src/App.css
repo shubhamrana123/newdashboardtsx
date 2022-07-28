@@ -1,7 +1,11 @@
 .App {
   text-align: center;
 }
-
+#redirectToSignup{
+  text-decoration: underline;
+  color:blue;
+  border:0px
+  }
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -18,7 +18,7 @@ function CardView(props : any) {
         }
     }, [props.forIcon])
     return (
-        <Card style={{ display: 'flex', justifyContent: 'center'}} sx={{ minWidth: 275 }} variant="outlined" >
+        <Card style={{ display: 'flex', justifyContent: 'center'}} sx={{ minWidth: 500  }} variant="outlined" >
             <CardContent>{props.children}</CardContent>
             <CardActions>
                 {/* <Button size="small" onClick={(event)=>goToDepartmentCredentialDetailCard(event)}>Learn More</Button> */}

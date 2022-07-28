@@ -2,9 +2,10 @@ import { Fragment } from "react";
 import CardView from "../../components/layout/Card";
 import Input from "../../components/layout/form-fields/Input";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    let navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -18,7 +19,7 @@ const Login = () => {
     }
     const redirectToSignup = ()=>
     {
-
+        navigate("../signup");
     }
 
     return (
@@ -30,7 +31,7 @@ const Login = () => {
                     <CardView>
                         <form onSubmit={handleSubmit(onLogin)}>
 
-                            <Input controller="email" label="Email" type="email" register={register} errors={errors} fields={{required:true,maxLength: 100,minLength:1}}  />
+                            <Input controller="email" label="Emails" type="email" register={register} errors={errors} fields={{required:true,maxLength: 100,minLength:1}}  />
                             <Input controller="password" label="Password" type="password" register={register} errors={errors} fields={{required:true,maxLength: 100,minLength:1}} />
                             <br />
                             <button className="form-control btn btn-success">
@@ -44,7 +45,7 @@ const Login = () => {
                         New Around Here? Then Signup
                     </li>
                 </div>
-
+                   
             </div>
         </Fragment>
     )
