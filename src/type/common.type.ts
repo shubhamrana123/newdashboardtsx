@@ -31,3 +31,12 @@ export interface ISelectBoxProps
     register : (controller : string, fields : IInputFileds)=> {},
 
 }
+
+export interface IUserInfo{
+    id: number,
+    fname : string,
+    lname : string,
+    email :string,
+    phone : string,
+    country: string
+}

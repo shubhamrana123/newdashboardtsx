@@ -1,11 +1,13 @@
-import { Fragment } from "react";
-import CardView from "../../components/layout/Card";
+import { Fragment,useContext } from "react";
+import CardView from "../../components/Card";
 import Input from "../../components/layout/form-fields/Input";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import UserContex, { IUserContex } from "../../context/UserContext";
 const Login = () => {
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+    let userCtx = useContext(UserContex);
     const {
         register,
         handleSubmit,
@@ -13,9 +15,28 @@ const Login = () => {
       } = useForm<any>();
 
 
-    const onLogin = ()=>
+    const onLogin = async (data:any)=>
     {
+        console.log("onLogin")
+        const res = await axios.post("http://localhost:3001/api/admin/login", data);
+        // console.log(data);
+        const { id, fname, lname, email, phone,country } = res?.data?.result
+        const userData : IUserContex = { id, fname, lname, email, phone,country }
 
+        console.log("userData",userData);
+        // setAdminData(res.data.result)
+        // console.log(adminDatas);
+        console.log("userCtx",userCtx)
+        userCtx?.loginHandler(userData);
+        // const {id,UserName} = {res.data.result.id,res.data.result.id,res.data.result.id}
+        if (res.data.statusCode == 200) {
+          if (res.data.result?.ErrorMessage) {
+            alert(res.data.result?.ErrorMessage);
+          } else {
+            navigate('/dashboard')
+          }
+        }
+    
     }
     const redirectToSignup = ()=>
     {

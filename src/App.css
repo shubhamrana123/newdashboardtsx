@@ -6,6 +6,9 @@
   color:blue;
   border:0px
   }
+  .border-remove-btn{
+    border-style: none;
+  }
 .App-logo {
   height: 40vmin;
   pointer-events: none;
